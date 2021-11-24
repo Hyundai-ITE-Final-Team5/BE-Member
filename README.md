@@ -1,5 +1,3 @@
-https://www.notion.so/REST-API-ad49e3bd11aa4635a7e5737d2a69df6f
-
 ## Member
 
 ### likes(찜)
