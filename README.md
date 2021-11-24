@@ -18,9 +18,9 @@
 
 | API | 설명 | input data |
 | --- | --- | --- |
-| `get`  /list/brand/{bno} |  | ?pageNo=1 |
-| `get`  /list/category |  | ?depth1=WOMEN&depth2=DRESS&depth3=MINI%20DRESS |
-| `get`  /list/addlike/{pid} |  |  |
-| `get`  /list/delike/{pid} |  |  |
+| `get`  |  |  |
+| `get`  |  |  |
+| `get`  |  |  |
+| `get`  |  |  |
 
 
