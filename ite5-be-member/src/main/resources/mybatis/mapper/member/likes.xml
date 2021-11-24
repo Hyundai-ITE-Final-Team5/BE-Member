@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.ite5bemember.memberdao.LikesDao">
+	<select id="selectLikeByMid" parameterType="string" resultType="likes">
+		SELECT mid, pid
+		FROM likes
+		WHERE mid=#{mid}
+	</select>
+	
+	<delete id="deleteLikes" parameterType="likes">
+		delete from likes
+		where pid = #{pid}
+		and mid = #{mid}
+	</delete>
+	
+	<insert id="insertLikes" parameterType="likes">
+		INSERT INTO likes(pid, mid) VALUES(#{pid},#{mid})
+	</insert>	
+</mapper> 

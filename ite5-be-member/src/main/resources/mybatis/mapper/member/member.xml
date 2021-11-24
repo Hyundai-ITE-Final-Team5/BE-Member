@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.ite5bemember.memberdao.MemberDao">
+	<insert id="insert" parameterType="member">
+		INSERT INTO member 
+		(mid, mpassword, mname, memail, mphone, mtel, mzipcode, maddress1, maddress2, mbirth, mgender, mrefid, mlogintype, mtosno, menabled, mrole, mgrade, mmileage) 
+		VALUES(#{mid}, #{mpassword}, #{mname}, #{memail}, #{mphone}, #{mtel}, #{mzipcode}, #{maddress1}, #{maddress2}, #{mbirth}, #{mgender}, #{mrefid}, #{mlogintype}, #{mtosno}, #{menabled}, #{mrole}, #{mgender},#{mmileage})
+	</insert>
+	
+	<select id="selectByMid" parameterType="string" resultType="member">
+		SELECT mid, mname, mpassword, menabled, mrole
+		FROM member
+		WHERE mid=#{mid}
+	</select>
+</mapper> 

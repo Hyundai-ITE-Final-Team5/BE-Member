@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.ite5bemember.productdao.ProductDao">
+
+	<resultMap type="java.util.HashMap" id="productColorNSizeMap">
+		<id property="pid" column="pid"/>
+		<collection property="colorList" javaType="java.util.ArrayList" resultMap="colorMap"/>
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="colorMap">
+		<id property="pcid" column="pcid"/>
+		<result property="pcchipimg" column="pcchipimg"/>
+		<result property="pccolorcode" column="pccolorcode"/>
+		<collection property="sizeList" javaType="java.util.ArrayList" resultMap="sizeMap"/>
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="sizeMap">
+		<id property="psid" column="psid"/>
+		<result property="psstock" column="psstock"/>
+		<result property="psize" column="psize"/>
+	</resultMap>
+	
+	
+	<select id="selectBylikes" parameterType="likes" resultType="likedproduct">
+		select pcol_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcom_tbl.pstatus, pcol_tbl.pcimg1 from 
+		(select pid, pcid, pcimg1, pcprice
+		from product_color
+		where ROWID in (select max(rowid) from product_color group by pid)) pcol_tbl
+		join product_common pcom_tbl
+		on pcol_tbl.pid = pcom_tbl.pid
+		where pcol_tbl.pid in (
+		<foreach collection="likes" item="item" separator=",">
+			#{item.pid}
+		</foreach>
+		)
+	</select>
+	
+	<select id="selectByCart" parameterType="cart" resultType="cartedproduct">
+		SELECT br.bname, pcom_tbl.pid, pcom_tbl.pname, pcol_tbl.pccolorcode, pcol_tbl.pcimg1, pstock_tbl.psid, pstock_tbl.psstock, pstock_tbl.psize
+		FROM product_stock pstock_tbl
+		JOIN product_color pcol_tbl
+		ON pstock_tbl.pcid = pcol_tbl.pcid
+		JOIN product_common pcom_tbl
+		ON pcol_tbl.pid = pcom_tbl.pid
+		JOIN brand br
+		ON pcom_tbl.bno = br.bno
+		WHERE pstock_tbl.psid in (
+		<foreach collection="cart" item="item" separator=",">
+			#{item.psid}
+		</foreach>
+		)
+	</select>
+	
+	<select id="selectColorNSizeByPid" parameterType="string" resultMap="productColorNSizeMap">
+		SELECT pcom_tbl.pid, pcol_tbl.pcid, pcol_tbl.pcchipimg, pcol_tbl.pccolorcode, pstock_tbl.psid, pstock_tbl.psstock, pstock_tbl.psize
+		FROM product_stock pstock_tbl
+		JOIN product_color pcol_tbl
+		ON pstock_tbl.pcid = pcol_tbl.pcid
+		JOIN product_common pcom_tbl
+		ON pcol_tbl.pid = pcom_tbl.pid
+		where pcom_tbl.pid = #{pid}
+	</select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Pager" alias="pager"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Member" alias="member"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Likes" alias="likes"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.LikedProduct" alias="likedproduct"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Cart" alias="cart"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.CartedProduct" alias="cartedproduct"/>
+	</typeAliases>	
+</configuration>
+
+
+
