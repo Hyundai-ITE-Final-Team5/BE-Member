@@ -23,3 +23,5 @@
 | `delete` /member/cart/deletecart  | 장바구니삭제 | {"psid":"SJ2B3WOP731W_BK_82"} | {"result": "성공여부"} |
 | `post` /member/cart/addcart  | 장바구니추가 | {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"} | {"result": "성공여부"} |
 | `post` /member/cart/getcolorsize | 장바구니 변경시 색상,사이즈가져오기 | {"pid":"CM2B1KPC502WM1"} | postman참고.. |
+| `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | {"result": "성공여부"} |
+
