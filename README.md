@@ -13,7 +13,7 @@
 
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
-| `post`  /member/likes/likelist | 찜목록  |  | {"likedlist": [{"pid": "CM2B7NOT219W","pname": "크롭 데님 점퍼","pstatus": 1,"pcprice": 545000,"pcimg1": "http://newmedia.thehandsome.com/CM/2B/FW/CM2B7NOT219W_CP_W01.jpg/dims/resize/684x1032/"},{},{},{}]}|
+| `post`  /member/likes/likelist | 찜목록  |  | [{"pid": "CM2B7NOT219W","pname": "크롭 데님 점퍼","pstatus": 1,"pcprice": 545000,"pcimg1": "http://newmedia.thehandsome.com/CM/2B/FW/CM2B7NOT219W_CP_W01.jpg/dims/resize/684x1032/"},{},{},{}]|
 | `delete` /member/likes/deletelike  | 찜취소 | {"pid":"CM2B0KCD231WP1"} | {"result": "성공여부"} |
 | `post` /member/likes/addlike  | 찜하기 | {"pid":"CM2B0KCD231WP1"} | {"result": "성공여부"} |
 
@@ -21,7 +21,7 @@
 
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
-| `post` /member/cart/cartlist | 장바구니목록 |  | {"cartedlist": [{"bname": "SJSJ","pid": "SJ2B3WJM401W","pname": "셔링 집업 점퍼","pccolorcode": "CR","pcimg1": "psid": "SJ2B3WJM401W_CR_76","psstock": 1,"psize": "76"}, {} {} ]}|
+| `post` /member/cart/cartlist | 장바구니목록 |  | [{"bname": "SJSJ","pid": "SJ2B3WJM401W","pname": "셔링 집업 점퍼","pccolorcode": "CR","pcimg1": "psid": "SJ2B3WJM401W_CR_76","psstock": 1,"psize": "76"}, {} {} ]|
 | `delete` /member/cart/deletecart  | 장바구니삭제 | {"psid":"SJ2B3WOP731W_BK_82"} | {"result": "성공여부"} |
 | `post` /member/cart/addcart  | 장바구니추가 | {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"} | {"result": "성공여부"} |
 | `post` /member/cart/getcolorsize | 장바구니 변경시 색상,사이즈가져오기 | {"pid":"CM2B1KPC502WM1"} | postman참고.. |
