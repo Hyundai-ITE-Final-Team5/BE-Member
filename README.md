@@ -8,6 +8,7 @@
 | `post`  /join | 회원가입  | {"mid":"아이디","mpassword":"비밀번호","mname":"사용자1","memail":"user@mycompany.com","mphone":"01022227777","mbirth":"1990-01-01","mgender":"1"} | {"result": "성공여부"}|
 | `post`  /member/mypage | 마이페이지 |  | {"mid": "아이디","mpassword": "null","mname": "사용자1","memail": "user@mycompany.com","mphone": "01022227777","mtel": null,"mzipcode": null,"maddress1": null,"maddress2": null,"mbirth": "1990-01-01T00:00:00.000+00:00","mgender": 1,"mrefid": null,"mlogintype": "1","mtosno": 1,"menabled": 1,"mrole": "ROLE_USER","mgrade": 1,"mmileage": 0}|
 | `post`  /member/modifyinfo | 회원정보수정 | {"mphone":"01011112222","memail":"","mtel":"","mzipcode": "","maddress1": "", "maddress2" : ""} | {"result": "성공/실패여부"}|
+| `post`  /idcheck | 아이디중복확인 | {"mid": "아이디"} | {"result": "possible/duplicate"}|
 
 
 ### likes(찜)
