@@ -73,6 +73,18 @@ public class MemberService {
 			return LoginResult.FAIL;
 		}
 	}
+	
+	public Member getMemberInfo(String mid) {
+		Member member = memberDao.selectByMid(mid);
+		if(member != null) {
+			member.setMpassword(null);
+		}
+		return member;
+	}
+	
+	public int modifyInfo(Member member) {
+		return memberDao.updateMember(member);
+	}
 
 }
 

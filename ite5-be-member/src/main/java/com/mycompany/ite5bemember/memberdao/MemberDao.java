@@ -12,6 +12,7 @@ import com.mycompany.ite5bemember.dto.Member;
 public interface MemberDao {
 	public int insert(Member member);	
 	public Member selectByMid(String mid);
+	public int updateMember(Member member);
 
 	
 }

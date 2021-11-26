@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.ite5bemember.memberdao.EventDao">
+	
+	<select id="totalEventCount" resultType="int">
+		SELECT count(eno) 
+		FROM event 
+		where estatus = 1
+	</select>
+	
+	<select id="selectEventList" resultType="event" parameterType="pager">
+		<![CDATA[
+		SELECT rnum, eno, etitle, eimg, eissuedate, eexpiredate, edetailimg
+			FROM (
+			  SELECT ROWNUM as rnum, eno, etitle, eimg, eissuedate, eexpiredate, edetailimg
+			  FROM (
+			    SELECT eno, etitle, eimg, eissuedate, eexpiredate, edetailimg
+                FROM event 
+                where estatus = 1
+			  )
+			  WHERE ROWNUM <= #{endRowNo}  
+			)
+			WHERE rnum >= #{startRowNo}
+			]]>
+	</select>
+	
+	<select id="selectEvent" resultType="event" parameterType="int">
+		SELECT eno, etitle, econtent, eissuedate, eexpiredate, elimitcount, ecount, eimg, ediscount, estatus, edetailimg, ecoupontitle
+		FROM event
+		WHERE eno = #{eno}
+	</select>
+	
+	<update id="updateToExhausted" parameterType="int">
+		UPDATE event 
+		SET pstatus = 2
+		WHERE eno = #{eno}
+	</update>
+	
+	<update id="updateEcount" parameterType="map">
+		UPDATE event
+		SET ecount = #{ecount}
+		WHERE eno = #{eno}
+	</update>
+
+</mapper> 

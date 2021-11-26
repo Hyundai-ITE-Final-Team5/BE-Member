@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class LikedProduct {
+	private String bname;
 	private String pid;
 	private String pname;
 	private int pstatus;

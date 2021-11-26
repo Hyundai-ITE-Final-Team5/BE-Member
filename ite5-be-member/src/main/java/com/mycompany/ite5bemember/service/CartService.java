@@ -47,4 +47,16 @@ public class CartService {
 	public int addCart(Cart cart) {
 		return cartDao.insertCart(cart);
 	}
+	
+	public Cart searchCart(Cart cart) {
+		return cartDao.selectByCart(cart);
+	}
+	
+	public int updateCart(Cart cart) {
+		return cartDao.updateCart(cart);
+	}
+	
+	public int updateCart(Map<String, Object> map) {
+		return cartDao.updateCartByMap(map);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +23,7 @@ import com.mycompany.ite5bemember.security.JWTUtil;
 import com.mycompany.ite5bemember.service.MemberService;
 import com.mycompany.ite5bemember.service.MemberService.JoinResult;
 
+import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -120,5 +122,62 @@ public class MemberPublicController {
 		map.put("jwt",JWTUtil.createToken(mid, authority));
 		return map;
 	}
+	
+	//**아이디 중복확인**/
+	@PostMapping("/idcheck")
+	public Map<String, String> idcheck(@RequestBody Member member){
+	
+		Member memberResult = memberService.getMemberInfo(member.getMid());
+		
+		Map<String, String> map = new HashMap<>();
+		if(memberResult == null) {
+			map.put("result", "possible");
+		}else {
+			map.put("result", "duplicate");
+		}
+		return map;
+	}
+	
+	//**마이페이지**
+	@PostMapping("/member/mypage")
+	public Member mypage(HttpServletRequest request){
+		String jwt = request.getHeader("Authorization").substring(7);
+	 	Claims claims = JWTUtil.validateToken(jwt);
+		String mid = JWTUtil.getMid(claims);
+		Member member = memberService.getMemberInfo(mid);
+		return member;
+	}
+	
+	//**회원정보수정**
+	@PostMapping("/member/modifyinfo")
+	public Map<String, String> modifyinfo(HttpServletRequest request, @RequestBody Member member){
+		String jwt = request.getHeader("Authorization").substring(7);
+	 	Claims claims = JWTUtil.validateToken(jwt);
+		String mid = JWTUtil.getMid(claims);
+		member.setMid(mid);
+		
+		if(member.getMemail().equals("")) {
+			member.setMemail(null);
+		}
+		if(member.getMtel().equals("")) {
+			member.setMtel(null);
+		}
+		if(member.getMzipcode().equals("")) {
+			member.setMzipcode(null);
+		}
+	
+		
+		int result = memberService.modifyInfo(member);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		
+		if(result == 0) {
+			map.put("result", "fail");
+		}else {
+			map.put("result", "success");
+		}
+		return map;
+	}
+	
 
 }

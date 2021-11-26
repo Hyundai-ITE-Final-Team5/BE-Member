@@ -9,6 +9,11 @@
 		<typeAlias type="com.mycompany.ite5bemember.dto.LikedProduct" alias="likedproduct"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.Cart" alias="cart"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.CartedProduct" alias="cartedproduct"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Event" alias="event"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.DownloadedCoupon" alias="downloadedcoupon"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.CouponDetail" alias="coupondetail"/>
+		
+		
 	</typeAliases>	
 </configuration>
 

@@ -1,5 +1,6 @@
 package com.mycompany.ite5bemember.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.ite5bemember.dto.CartedProduct;
 import com.mycompany.ite5bemember.dto.LikedProduct;
 import com.mycompany.ite5bemember.dto.Likes;
 import com.mycompany.ite5bemember.security.JWTUtil;
@@ -32,17 +34,17 @@ public class LikesController {
 	
 	// **찜목록 조회**
 	@PostMapping("/likelist")
-	public Map<String,Object> searchlike(HttpServletRequest request){
+	public List<LikedProduct> searchlike(HttpServletRequest request){
 		String jwt = request.getHeader("Authorization").substring(7);
 		Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
 		
 		List<Likes> likeList = likesService.getLikeList(mid);
+		if(likeList.size()==0) {
+			return new ArrayList<LikedProduct>();
+		}
 		List<LikedProduct> likedProductList= likesService.getProductbyLike(likeList);
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("likedlist", likedProductList);
-		return map;
+		return likedProductList;
 	}
 	
 	// **찜목록 삭제**
