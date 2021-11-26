@@ -12,4 +12,6 @@ public class CartedProduct {
 	private String psid;
 	private int psstock;
 	private String psize;
+	private int pquantity;
+	private int pcprice;
 }

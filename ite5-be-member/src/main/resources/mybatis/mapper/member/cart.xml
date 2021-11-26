@@ -15,5 +15,22 @@
 	<insert id="insertCart" parameterType="cart">
 		INSERT INTO cart(mid, psid, pquantity) VALUES(#{mid},#{psid},#{pquantity})
 	</insert>
-	
+	<select id="selectByCart" parameterType="cart" resultType="cart">
+		SELECT mid, psid, pquantity
+		FROM cart
+		WHERE mid=#{mid}
+		AND psid=#{psid}
+	</select>
+	<update id="updateCart" parameterType="cart">
+		UPDATE cart 
+		SET pquantity = #{pquantity}
+		WHERE mid = #{mid}
+		AND psid = #{psid}
+	</update>
+	<update id="updateCartByMap" parameterType="Map">
+		UPDATE cart 
+		SET pquantity = #{pquantity}, psid= #{newpsid}
+		WHERE mid = #{mid}
+		AND psid = #{oldpsid}
+	</update>
 </mapper> 

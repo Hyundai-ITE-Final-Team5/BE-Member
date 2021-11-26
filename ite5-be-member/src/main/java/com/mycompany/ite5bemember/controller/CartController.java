@@ -1,5 +1,6 @@
 package com.mycompany.ite5bemember.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,17 +35,27 @@ public class CartController {
 	
 	// **장바구니리스트 조회**
 	@PostMapping("/cartlist")
-	public Map<String,Object> searchlike(HttpServletRequest request){
+	public List<CartedProduct> searchlike(HttpServletRequest request){
 		String jwt = request.getHeader("Authorization").substring(7);
 	 	Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
 		
 		List<Cart> cartList = cartService.getCartList(mid);
-		List<CartedProduct> cartedList = cartService.cartProductByCart(cartList);
+		if(cartList.size()==0) {
+			return new ArrayList<CartedProduct>();
+		}
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("cartedlist", cartedList);
-		return map;
+		List<CartedProduct> cartedList = cartService.cartProductByCart(cartList);
+		for(CartedProduct cartedProduct : cartedList) {
+			for(Cart cart :cartList) {
+				if(cart.getPsid().equals(cartedProduct.getPsid())) {
+					cartedProduct.setPquantity(cart.getPquantity());
+					break;
+				}
+			}
+		}
+		
+		return cartedList;
 	}
 	
 	// **장바구니에서 상품 삭제**
@@ -87,9 +98,6 @@ public class CartController {
 		return map;
 	}
 	
-	// **장바구니 옵션 변경후 젖아버튼을 눌렀을때 **
-	
-	
 	// **장바구니에 담기**
 	@PostMapping("/addcart")
 	public Map<String,String> addcart(HttpServletRequest request, @RequestBody Cart cart){
@@ -98,7 +106,78 @@ public class CartController {
 		String mid = JWTUtil.getMid(claims);
 		cart.setMid(mid);
 		
-		int result = cartService.addCart(cart);
+		//기존에 카트에 상품이 담겨있는지 확인
+		Cart searchedCart = cartService.searchCart(cart);
+		
+		int result = 0;
+		//전에 장바구니에 담긴적이 없을때 새롭게 추가
+		if(searchedCart == null) {
+			result = cartService.addCart(cart);
+		//전에 장바구니에 담긴적이 있는경우 수량만 변경
+		}else {
+			searchedCart.setPquantity(searchedCart.getPquantity()+cart.getPquantity());
+			result = cartService.updateCart(searchedCart);
+		}
+		
+		Map<String,String> map = new HashMap<String, String>();
+		if(result == 0) {
+			map.put("result", "fail");
+		}else {
+			map.put("result", "success");
+		}
+		return map;
+	}
+	
+	//장바구니에서 색상,사이즈,수량을 바꾸고 "저장 버튼을 누른 경우"
+	@PostMapping("/changecart")
+	public Map<String,String> changecart(HttpServletRequest request, @RequestBody String json){
+		String jwt = request.getHeader("Authorization").substring(7);
+		Claims claims = JWTUtil.validateToken(jwt);
+		String mid = JWTUtil.getMid(claims);
+		
+		JSONObject jsonObject = new JSONObject(json);
+		String oldpsid = jsonObject.getString("oldpsid");
+		String newpsid = jsonObject.getString("newpsid");
+		int pquantity = jsonObject.getInt("pquantity");
+		
+		int result = 0;
+		Cart cart = new Cart();
+		cart.setMid(mid);
+		cart.setPquantity(pquantity);
+		cart.setPsid(newpsid);
+		
+		//사이즈,색상 같고 수량만 다른 경우 - 동일한 psid에서 pquantity만 update
+		if(oldpsid.equals(newpsid)) {
+			result = cartService.updateCart(cart);
+		//사이즈,색상 모두 변경된 경우, 수량은 상관없음
+		}else if(!oldpsid.equals(newpsid)) {
+			
+			//기존에 변경하고하자는 psid가 있는지 확인
+			Cart searchedCart = cartService.searchCart(cart);
+			
+			//기존에 변경하고자하는 psid가 있는경우
+			if(searchedCart != null) {
+				cart.setPsid(oldpsid);
+				int result1 = cartService.deleteCart(cart);
+				cart.setPsid(newpsid);
+				cart.setPquantity(searchedCart.getPquantity()+cart.getPquantity());
+				int result2 = cartService.updateCart(cart);
+				if(result1 != 0 && result2 != 0) {
+					result = 1;
+				}
+			//기존에 변경하고자하는 psid가 없는경우
+			}else {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("oldpsid", oldpsid);
+				map.put("newpsid", newpsid);
+				map.put("pquantity", pquantity);
+				map.put("mid",mid);
+				result = cartService.updateCart(map);
+			}
+		}
+		//추가하는 과정에서 장바구니에 전에 담긴게 있는지 확인 필요
+		//있다면 psid 지우고 기존 psid를 update
+		//없다면 psid를 지우고 새로운 psid를 추가
 		Map<String,String> map = new HashMap<String, String>();
 		if(result == 0) {
 			map.put("result", "fail");
