@@ -33,3 +33,9 @@
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
 | `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0},{}{}]|
+
+### couponDetail(쿠폰)
+
+| API | 설명 | input data | output data |
+| --- | --- | --- | --- |
+| `get` /member/coupon/couponlist | 쿠폰목록 |  | [{"ecoupontitle": "앱다운로드 쿠폰","ediscount": 10,"cpstatus": 1,"cpissuedate": "2021-11-26T08:09:01.133+00:00","cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]|
