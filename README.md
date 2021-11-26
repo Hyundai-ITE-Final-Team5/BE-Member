@@ -40,3 +40,4 @@
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
 | `get` /member/coupon/couponlist | 쿠폰목록 |  | [{"ecoupontitle": "앱다운로드 쿠폰","ediscount": 10,"cpstatus": 1,"cpissuedate": "2021-11-26T08:09:01.133+00:00","cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]|
+| `get` /member/coupon/download | 쿠폰다운 |  ?eno=2 | [{"result":"needlogin" or "already" or "exhausted" or "expired" or "enoerror"}|
