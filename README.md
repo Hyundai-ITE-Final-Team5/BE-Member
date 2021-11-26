@@ -29,3 +29,8 @@
 | `post` /member/cart/getcolorsize | 장바구니 변경시 색상,사이즈가져오기 | {"pid":"CM2B1KPC502WM1"} | postman참고.. |
 | `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | {"result": "성공여부"} |
 
+### event(이벤트)
+| API | 설명 | input data | output data |
+| --- | --- | --- | --- |
+| `get` /event/eventlist | 이벤트리스트 | ?pageNo | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0
+    },|
