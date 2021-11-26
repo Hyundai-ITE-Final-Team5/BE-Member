@@ -32,5 +32,4 @@
 ### event(이벤트)
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
-| `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0
-    },|
+| `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0},{}{}]|
