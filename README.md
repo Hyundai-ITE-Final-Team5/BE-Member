@@ -33,6 +33,7 @@
 | API | 설명 | input data | output data |
 | --- | --- | --- | --- |
 | `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0},{}{}]|
+| `get` /event/eventdetail | 이벤트상세페이지 | ?eno=1 | {"eno": 1,"etitle": "앱다운로드이벤트","econtent": "크리스마스이벤트","eissuedate": "2021-11-10T06:04:41.780+00:00","eexpiredate": "2021-12-25T06:04:44.366+00:00","elimitcount": 0,"ecount": 0,"eimg": null,"ediscount": 0,"estatus": 0,"edetailimg": "http://cdn.thehandsome.com/pc/event/detail/image/handsome_202111/event_black_friday_211117_pc_img_01_02_1.jpg"}|
 
 ### couponDetail(쿠폰)
 
