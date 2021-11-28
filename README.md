@@ -26,7 +26,7 @@
 | `post` /member/cart/cartlist | 장바구니목록 |  | [{"bname": "SJSJ","pid": "SJ2B3WJM401W","pname": "셔링 집업 점퍼","pccolorcode": "CR","pcimg1": "psid": "SJ2B3WJM401W_CR_76","psstock": 1,"psize": "76","pquantity": 1,"pcprice": 318500,"pcchipimg":"컬러칩url","colornsize":{"pid":"상품id","colorlist":[{},{}]}}, {} {} ]|
 | `delete` /member/cart/deletecart  | 장바구니삭제 | {"psid":"SJ2B3WOP731W_BK_82"} | {"result": "성공여부"} |
 | `post` /member/cart/addcart  | 장바구니추가 | {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"} | {"result": "성공여부"} |
-| `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | {"result": "성공여부"} |
+| `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | 장바구니목록 return |
 
 ### event(이벤트)
 | API | 설명 | input data | output data |
