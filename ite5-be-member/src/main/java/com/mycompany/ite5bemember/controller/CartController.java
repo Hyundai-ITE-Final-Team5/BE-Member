@@ -35,7 +35,7 @@ public class CartController {
 	
 	// **장바구니리스트 조회**
 	@PostMapping("/cartlist")
-	public List<CartedProduct> searchlike(HttpServletRequest request){
+	public List<CartedProduct> searchCart(HttpServletRequest request){
 		String jwt = request.getHeader("Authorization").substring(7);
 	 	Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
@@ -53,24 +53,21 @@ public class CartController {
 					break;
 				}
 			}
+			String pid = cartedProduct.getPid();
+			Map<Object, Object> map = cartService.getColorSize(pid);
+			cartedProduct.setColornsize(map);
 		}
-		
 		return cartedList;
 	}
 	
 	// **장바구니에서 상품 삭제**
 	@DeleteMapping("/deletecart")
-	public Map<String,String> deletecart(HttpServletRequest request, @RequestBody String json) {
+	public Map<String,String> deletecart(HttpServletRequest request, @RequestBody Cart cart) {
 		String jwt = request.getHeader("Authorization").substring(7);
 		Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
 		
-		JSONObject jsonObject = new JSONObject(json);
-		String psid = jsonObject.getString("psid");
-		
-		Cart cart = new Cart();
 		cart.setMid(mid);
-		cart.setPsid(psid);
 		
 		int result = cartService.deleteCart(cart);
 		
@@ -130,7 +127,7 @@ public class CartController {
 	
 	//장바구니에서 색상,사이즈,수량을 바꾸고 "저장 버튼을 누른 경우"
 	@PostMapping("/changecart")
-	public Map<String,String> changecart(HttpServletRequest request, @RequestBody String json){
+	public List<CartedProduct> changecart(HttpServletRequest request, @RequestBody String json){
 		String jwt = request.getHeader("Authorization").substring(7);
 		Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
@@ -178,12 +175,7 @@ public class CartController {
 		//추가하는 과정에서 장바구니에 전에 담긴게 있는지 확인 필요
 		//있다면 psid 지우고 기존 psid를 update
 		//없다면 psid를 지우고 새로운 psid를 추가
-		Map<String,String> map = new HashMap<String, String>();
-		if(result == 0) {
-			map.put("result", "fail");
-		}else {
-			map.put("result", "success");
-		}
-		return map;
+
+		return searchCart(request);
 	}
 }
