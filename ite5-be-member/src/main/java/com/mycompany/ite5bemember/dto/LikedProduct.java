@@ -10,5 +10,5 @@ public class LikedProduct {
 	private int pstatus;
 	private int pcprice;
 	private String pcimg1;
-	
+	private String pcid;
 }
