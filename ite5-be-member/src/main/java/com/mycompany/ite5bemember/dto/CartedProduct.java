@@ -1,5 +1,7 @@
 package com.mycompany.ite5bemember.dto;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
@@ -14,4 +16,6 @@ public class CartedProduct {
 	private String psize;
 	private int pquantity;
 	private int pcprice;
+	private String pcchipimg;
+	private Map<Object, Object> colornsize;
 }

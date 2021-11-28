@@ -23,7 +23,7 @@
 	
 	
 	<select id="selectBylikes" parameterType="likes" resultType="likedproduct">
-		select pcol_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcom_tbl.pstatus, pcol_tbl.pcimg1, br.bname from 
+		select pcol_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcom_tbl.pstatus, pcol_tbl.pcimg1, pcol_tbl.pcid, br.bname from 
 		(select pid, pcid, pcimg1, pcprice
 		from product_color
 		where ROWID in (select max(rowid) from product_color group by pid)) pcol_tbl
@@ -39,7 +39,7 @@
 	</select>
 	
 	<select id="selectByCart" parameterType="cart" resultType="cartedproduct">
-		SELECT br.bname, pcom_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcol_tbl.pccolorcode, pcol_tbl.pcimg1, pstock_tbl.psid, pstock_tbl.psstock, pstock_tbl.psize
+		SELECT br.bname, pcom_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcol_tbl.pccolorcode, pcol_tbl.pcimg1, pcol_tbl.pcchipimg, pstock_tbl.psid, pstock_tbl.psstock, pstock_tbl.psize
 		FROM product_stock pstock_tbl
 		JOIN product_color pcol_tbl
 		ON pstock_tbl.pcid = pcol_tbl.pcid
