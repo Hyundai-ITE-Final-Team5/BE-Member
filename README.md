@@ -132,7 +132,7 @@
 ```json
 {"psid":"SJ2B3WOP731W_BK_82"}
 ```
-[ouput data]
+[output data]
 ```json
 {"result": "성공여부"}
 ```
@@ -143,7 +143,7 @@
 ```json
 {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"}
 ```
-[ouput data]
+[output data]
 ```json
 {"result": "성공여부"}
 ```
@@ -155,7 +155,7 @@
 ```json
 {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"}
 ```
-[ouput data]
+[output data]
 ```
 {장바구니목록 return}
 ```
@@ -164,7 +164,7 @@
 ------------------
 `get` /event/eventlist?pageNo=1 : 이벤트리스트
 
-[ouput data]
+[output data]
 ```json
 [{"eno": 1,
 "etitle": "크리스마스 이벤트",
@@ -179,7 +179,7 @@
 ```
 ------------------
 `get` /event/eventdetail?eno=1 : 이벤트상세페이지 
-[ouput data]
+[output data]
 ```json
 {"eno": 1,"etitle": "앱다운로드이벤트","econtent": "크리스마스이벤트","eissuedate": "2021-11-10T06:04:41.780+00:00","eexpiredate": "2021-12-25T06:04:44.366+00:00","elimitcount": 0,"ecount": 0,"eimg": null,"ediscount": 0,"estatus": 0,"edetailimg": "http://cdn.thehandsome.com/pc/event/detail/image/handsome_202111/event_black_friday_211117_pc_img_01_02_1.jpg"}
 ```
@@ -189,7 +189,7 @@
 ------------------
 `get` /member/coupon/couponlist : 쿠폰목록
 
-[ouput data]
+[output data]
 ```json
 [{"ecoupontitle": "앱다운로드 쿠폰",
 "ediscount": 10,
@@ -201,7 +201,7 @@
 ------------------
 `get` /member/coupon/download?eno=2 : 쿠폰다운
 
-[ouput data]
+[output data]
 ```json
 {"result":"needlogin or already or exhausted or expired or enoerror"}
 ```
