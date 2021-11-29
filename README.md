@@ -3,10 +3,12 @@
 ### Member
 
 
- `post`  /login : 로그인하기  
+ `post`  /login : 로그인하기
+ [input data]
  ```json
  {"mid":"아이디","mpassword":"비밀번호"}
  ```
+ [output data]
  ```json
  {"result": "성공/실패여부","jwt": "토큰","mid": "아이디"}
  ```
