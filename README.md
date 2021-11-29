@@ -32,9 +32,36 @@
 `post`  /member/mypage : 마이페이지
 [output data]
 ```json
-{"mid": "아이디","mpassword": "null","mname": "사용자1","memail": "user@mycompany.com","mphone": "01022227777","mtel": null,"mzipcode": null,"maddress1": null,"maddress2": null,"mbirth": "1990-01-01T00:00:00.000+00:00","mgender": 1,"mrefid": null,"mlogintype": "1","mtosno": 1,"menabled": 1,"mrole": "ROLE_USER","mgrade": 1,"mmileage": 0}
+{"mid": "아이디",
+"mpassword": "null",
+"mname": "사용자1",
+"memail": "user@mycompany.com",
+"mphone": "01022227777",
+"mtel": "(선택)",
+"mzipcode": "(선택)",
+"maddress1": "(선택)",
+"maddress2": "(선택)",
+"mbirth": "1990-01-01T00:00:00.000+00:00",
+"mgender": 1,
+"mrefid": "(선택)",
+"mlogintype": "1",
+"mtosno": 1,
+"menabled": 1,
+"mrole": "ROLE_USER",
+"mgrade": 1,
+"mmileage": 0}
 ```
-| `post`  /member/modifyinfo | 회원정보수정 | {"mphone":"01011112222","memail":"","mtel":"","mzipcode": "","maddress1": "", "maddress2" : ""} | {"result": "성공/실패여부"}|
+------------------
+`post`  /member/modifyinfo : 회원정보수정
+
+[input data]
+```json
+{"mphone":"01011112222","memail":"","mtel":"","mzipcode": "","maddress1": "", "maddress2" : ""} 
+```
+[output data]
+```json
+| {"result": "성공/실패여부"}|
+```
 | `post`  /idcheck | 아이디중복확인 | {"mid": "아이디"} | {"result": "possible" or "duplicate"}|
 
 
