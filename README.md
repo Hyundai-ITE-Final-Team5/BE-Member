@@ -157,7 +157,7 @@
 ```
 [ouput data]
 ```json
-장바구니목록 return
+{장바구니목록 return}
 ```
 
 ## event(이벤트)
