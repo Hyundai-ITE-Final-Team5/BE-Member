@@ -49,7 +49,7 @@ public class CouponDetailController {
 		
 	// ** 쿠폰다운로드 **
 	@GetMapping("/download")
-	public Map<String, String> download(HttpServletRequest request, int eno){
+	public Map<String, String> download(HttpServletRequest request, int eno) throws Exception{
 		Map<String, String> map = new HashMap<>();
 		
 		//토큰의 값이 null인 경우
@@ -78,8 +78,12 @@ public class CouponDetailController {
 				if(coupon != null) {
 					map.put("result", "already");
 				} else {
-					couponDetailService.addCoupon(eno,mid);
-					map.put("result", "success");
+					int addCouponResult = couponDetailService.addCoupon(eno,mid);
+					if(addCouponResult == 1) {
+						map.put("result", "success");
+					}else {
+						map.put("result", "fail");
+					}
 				}
 			}else if(eventCheckResult == eventCheckResult.COUPON_EXHAUSTED) {
 				map.put("result", "exhausted");
