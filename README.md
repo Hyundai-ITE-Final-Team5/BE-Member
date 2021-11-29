@@ -156,7 +156,7 @@
 {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"}
 ```
 [ouput data]
-```json
+```
 {장바구니목록 return}
 ```
 
