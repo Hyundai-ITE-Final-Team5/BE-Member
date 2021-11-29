@@ -30,6 +30,7 @@
 {"result": "성공여부"}
 ```
 `post`  /member/mypage : 마이페이지
+
 [output data]
 ```json
 {"mid": "아이디",
@@ -58,6 +59,7 @@
 ```json
 {"mphone":"01011112222","memail":"","mtel":"","mzipcode": "","maddress1": "", "maddress2" : ""} 
 ```
+
 [output data]
 ```json
 | {"result": "성공/실패여부"}|
