@@ -62,17 +62,40 @@
 
 [output data]
 ```json
-| {"result": "성공/실패여부"}|
+{"result": "성공/실패여부"}
 ```
-| `post`  /idcheck | 아이디중복확인 | {"mid": "아이디"} | {"result": "possible" or "duplicate"}|
+------------------
+`post`  /idcheck : 아이디중복확인
 
+[input data]
+```json
+{"mid": "아이디"}
+```
+[output data]
+```json
+{"result": "possible" or "duplicate"}|
+```
 
-## likes(찜)
+### likes(찜)
+------------------
+`post`  /member/likes/likelist : 찜목록  
 
-| API | 설명 | input data | output data |
-| --- | --- | --- | --- |
-| `post`  /member/likes/likelist | 찜목록  |  | [{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": 상태,"pcprice": 가격,"pcimg1": "상품이미지url"},{},{},{}]|
-| `delete` /member/likes/deletelike  | 찜취소 | {"pid":"CM2B0KCD231WP1"} | {"result": "성공여부"} |
+[output data]
+```json
+[{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": 상태,"pcprice": 가격,"pcimg1": "상품이미지url"},{},{},{}]
+```
+
+------------------
+`delete` /member/likes/deletelike : 찜취소
+
+[input data]
+```json
+{"pid":"CM2B0KCD231WP1"}
+```
+[output data]
+```json
+{"result": "성공여부"}
+```
 | `post` /member/likes/addlike  | 찜하기 | {"pid":"CM2B0KCD231WP1"} | {"result": "성공여부"} |
 
 ## cart(장바구니)
