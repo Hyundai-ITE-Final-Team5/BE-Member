@@ -24,4 +24,5 @@ public class Member {
 	private String mrole;
 	private int mgrade;
 	private int mmileage;
+	private int totalorderprice;
 }

@@ -30,4 +30,59 @@
 		</if>
 		WHERE mid = #{mid}
 	</update>
+	
+	<update id="update1Grade" parameterType="member">
+		UPDATE member 
+		SET mgrade = 1
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
+	<update id="update2Grade" parameterType="member">
+		UPDATE member
+		SET mgrade = 2
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
+	<update id="update3Grade" parameterType="member">
+		UPDATE member 
+		SET mgrade = 3
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
+	<update id="update4Grade" parameterType="member">
+		UPDATE member 
+		SET mgrade = 4
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
+	<update id="update5Grade" parameterType="member">
+		UPDATE member 
+		SET mgrade = 5 
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
+	<update id="update6Grade" parameterType="member">
+		UPDATE member 
+		SET mgrade = 6
+		WHERE mid in (
+		<foreach collection="member" item="item" separator=",">
+			#{item.mid}
+		</foreach>
+		)
+	</update>
 </mapper> 
