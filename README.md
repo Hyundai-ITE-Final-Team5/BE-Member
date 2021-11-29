@@ -195,7 +195,8 @@
 "ediscount": 10,
 "cpstatus": 1,
 "cpissuedate": "2021-11-26T08:09:01.133+00:00",
-"cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]
+"cpexpiredate": "2021-11-29T08:09:04.048+00:00"
+"cpid":"쿠폰id"},{},{}]
 ```
 ------------------
 `get` /member/coupon/download?eno=2 : 쿠폰다운
