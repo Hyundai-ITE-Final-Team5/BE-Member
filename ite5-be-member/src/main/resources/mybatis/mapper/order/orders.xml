@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.ite5bemember.orderdao.OrdersDao">
+	<select id="selectTotalOrder" parameterType="string" resultType="int">
+		SELECT totalpricemonth."totalorderprice" 
+		FROM totalpricemonth 
+		WHERE totalpricemonth."mid" = #{mid}
+	</select>
+	
+	<select id="selectOrders" parameterType="string" resultType="orders">
+	SELECT oid FROM orders 
+	WHERE mid = #{mid}
+	AND odate BETWEEN add_months(sysdate,-1) AND SYSDATE
+	</select>
+	
+	<select id="select1grade" resultType="member">
+		 <![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 0
+			AND totalpricemonth."totalorderprice" < 1
+		]]>
+	</select>
+	
+	<select id="select2grade" resultType="member">
+	 	<![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 1
+			AND totalpricemonth."totalorderprice" < 1000000
+		]]>
+	</select>
+	
+	<select id="select3grade" resultType="member">
+	 	<![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 1000000
+			AND totalpricemonth."totalorderprice" < 2000000
+		]]>
+	</select>
+
+	<select id="select4grade" resultType="member">
+		<![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 2000000
+			AND totalpricemonth."totalorderprice" < 3000000
+		]]>
+	</select>
+	<select id="select5grade" resultType="member">
+	 	<![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 3000000
+			AND totalpricemonth."totalorderprice" < 5000000
+		]]>
+	</select>
+	<select id="select6grade" resultType="member">
+		<![CDATA[
+			SELECT totalpricemonth."mid" as mid
+			from totalpricemonth
+			WHERE totalpricemonth."totalorderprice" >= 5000000
+    	]]>
+	</select>
+	
+</mapper>
