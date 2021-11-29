@@ -2,7 +2,6 @@
 
 ### Member
 ------------------
-
  `post`  /login : 로그인하기 
  
  [input data]
@@ -13,6 +12,7 @@
  ```json
  {"result": "성공/실패여부","jwt": "토큰","mid": "아이디"}
  ```
+------------------
 `post`  /join : 회원가입  
 [input data]
 ```json
