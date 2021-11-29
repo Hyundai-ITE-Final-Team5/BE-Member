@@ -12,6 +12,7 @@
 		<typeAlias type="com.mycompany.ite5bemember.dto.Event" alias="event"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.DownloadedCoupon" alias="downloadedcoupon"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.CouponDetail" alias="coupondetail"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Orders" alias="orders"/>
 		
 		
 	</typeAliases>	
