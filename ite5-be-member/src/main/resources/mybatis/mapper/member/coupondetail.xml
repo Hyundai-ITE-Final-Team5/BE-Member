@@ -3,7 +3,7 @@
 
 <mapper namespace="com.mycompany.ite5bemember.memberdao.CouponDetailDao">
 	<select id="selectCouponList" parameterType="string" resultType="downloadedcoupon">
-		SELECT e.ecoupontitle, e.ediscount, co.cpstatus, co.cpissuedate, co.cpexpiredate
+		SELECT e.ecoupontitle, e.ediscount, co.cpstatus, co.cpissuedate, co.cpexpiredate, co.cpid
 		FROM coupon_detail co
 		JOIN event e
 		ON co.eno = e.eno
@@ -15,7 +15,7 @@
 		AND mid=#{mid}
 	</select>
 	<update id="insertCouponDetail" parameterType="coupondetail">
-		INSERT INTO coupon_detail(cpid, eno, mid, cpissudate, cpexpiredate, cpstatus)
-		VALUES(#{cpid},#{eno},#{mid},#{cpissudate},#{cpexpiredate},#{cpstatus}) 
+		INSERT INTO coupon_detail(cpid, eno, mid, cpissuedate, cpexpiredate, cpstatus)
+		VALUES(#{cpid},#{eno},#{mid},#{cpissuedate},#{cpexpiredate},#{cpstatus}) 
 	</update>
 </mapper> 

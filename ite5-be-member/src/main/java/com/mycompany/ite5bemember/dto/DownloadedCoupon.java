@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class DownloadedCoupon {
+	private String cpid;
 	private String ecoupontitle;
 	private int ediscount;
 	private int cpstatus;
