@@ -82,7 +82,7 @@
 
 [output data]
 ```json
-[{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": 상태,"pcprice": 가격,"pcimg1": "상품이미지url"},{},{},{}]
+[{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": "상태","pcprice": 가격,"pcimg1": "상품이미지url"},{},{},{}]
 ```
 
 ------------------
@@ -137,19 +137,69 @@
 {"result": "성공여부"}
 ```
 ------------------
-| `post` /member/cart/addcart  | 장바구니추가 | {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"} | {"result": "성공여부"} |
+`post` /member/cart/addcart : 장바구니추가
+
+[input data]
+```json
+{"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"}
+```
+[ouput data]
+```json
+{"result": "성공여부"}
+```
 ------------------
-| `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | 장바구니목록 return |
+
+`post` /member/cart/changecart : 장바구니 변경사항 저장 
+
+[input data]
+```json
+{"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"}
+```
+[ouput data]
+```json
+장바구니목록 return
+```
 
 ## event(이벤트)
 ------------------
-| `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0},{}{}]|
+`get` /event/eventlist?pageNo=1 : 이벤트리스트
+
+[ouput data]
+```json
+[{"eno": 1,
+"etitle": "크리스마스 이벤트",
+"econtent": "",
+"eissuedate": "2021-11-26T02:26:54.794+00:00",
+"eexpiredate": "2021-12-25T02:26:58.040+00:00",
+"elimitcount": 0,
+"ecount": 0,
+"eimg": "이미지url",
+"ediscount": 0,
+"estatus": 0},{}{}]
+```
 ------------------
-| `get` /event/eventdetail | 이벤트상세페이지 | ?eno=1 | {"eno": 1,"etitle": "앱다운로드이벤트","econtent": "크리스마스이벤트","eissuedate": "2021-11-10T06:04:41.780+00:00","eexpiredate": "2021-12-25T06:04:44.366+00:00","elimitcount": 0,"ecount": 0,"eimg": null,"ediscount": 0,"estatus": 0,"edetailimg": "http://cdn.thehandsome.com/pc/event/detail/image/handsome_202111/event_black_friday_211117_pc_img_01_02_1.jpg"}|
+`get` /event/eventdetail?eno=1 : 이벤트상세페이지 
+[ouput data]
+```json
+{"eno": 1,"etitle": "앱다운로드이벤트","econtent": "크리스마스이벤트","eissuedate": "2021-11-10T06:04:41.780+00:00","eexpiredate": "2021-12-25T06:04:44.366+00:00","elimitcount": 0,"ecount": 0,"eimg": null,"ediscount": 0,"estatus": 0,"edetailimg": "http://cdn.thehandsome.com/pc/event/detail/image/handsome_202111/event_black_friday_211117_pc_img_01_02_1.jpg"}
+```
 
 ## couponDetail(쿠폰)
 
 ------------------
-| `get` /member/coupon/couponlist | 쿠폰목록 |  | [{"ecoupontitle": "앱다운로드 쿠폰","ediscount": 10,"cpstatus": 1,"cpissuedate": "2021-11-26T08:09:01.133+00:00","cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]|
+`get` /member/coupon/couponlist : 쿠폰목록
+
+[ouput data]
+```json
+[{"ecoupontitle": "앱다운로드 쿠폰",
+"ediscount": 10,
+"cpstatus": 1,
+"cpissuedate": "2021-11-26T08:09:01.133+00:00",
+"cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]
+```
 ------------------
-| `get` /member/coupon/download | 쿠폰다운 |  ?eno=2 | [{"result":"needlogin" or "already" or "exhausted" or "expired" or "enoerror"}|
+`get` /member/coupon/download?eno=2 : 쿠폰다운
+[ouput data]
+```json
+{"result":"needlogin or already or exhausted or expired or enoerror}
+```
