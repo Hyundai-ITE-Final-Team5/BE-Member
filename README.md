@@ -29,6 +29,7 @@
 ```json
 {"result": "성공여부"}
 ```
+------------------
 `post`  /member/mypage : 마이페이지
 
 [output data]
@@ -59,7 +60,6 @@
 ```json
 {"mphone":"01011112222","memail":"","mtel":"","mzipcode": "","maddress1": "", "maddress2" : ""} 
 ```
-
 [output data]
 ```json
 {"result": "성공/실패여부"}
@@ -73,7 +73,7 @@
 ```
 [output data]
 ```json
-{"result": "possible" or "duplicate"}|
+{"result": "possible or duplicate"}|
 ```
 
 ### likes(찜)
@@ -96,26 +96,60 @@
 ```json
 {"result": "성공여부"}
 ```
-| `post` /member/likes/addlike  | 찜하기 | {"pid":"CM2B0KCD231WP1"} | {"result": "성공여부"} |
+------------------
+`post` /member/likes/addlike : 찜하기
+[input data]
+```json
+{"pid":"CM2B0KCD231WP1"}
+```
+[output data]
+```json
+{"result": "성공여부"} |
+```
 
 ## cart(장바구니)
 
-| API | 설명 | input data | output data |
-| --- | --- | --- | --- |
-| `post` /member/cart/cartlist | 장바구니목록 |  | [{"bname": "브랜드명","pid": "p아이디","pname": "상품명","pccolorcode": "색상코드","pcimg1":"이미지url" "psid": "ps아이디","psstock": 재고수량,"psize": "사이즈","pquantity": 수량,"pcprice": 가격,"pcchipimg":"컬러칩url","colornsize":{"pid":"상품id","colorlist":[{},{}]}}, {} {} ]|
-| `delete` /member/cart/deletecart  | 장바구니삭제 | {"psid":"SJ2B3WOP731W_BK_82"} | {"result": "성공여부"} |
+------------------
+`post` /member/cart/cartlist : 장바구니목록
+[output data]
+```json
+[{"bname": "브랜드명",
+"pid": "p아이디",
+"pname": "상품명",
+"pccolorcode": "색상코드",
+"pcimg1":"이미지url",
+"psid": "ps아이디",
+"psstock": 재고수량,
+"psize": "사이즈",
+"pquantity": 수량,
+"pcprice": 가격,
+"pcchipimg":"컬러칩url",
+"colornsize":{"pid":"상품id","colorlist":[{},{}]}}, {} {} ]
+```
+------------------
+`delete` /member/cart/deletecart : 장바구니삭제 
+[input data]
+```json
+{"psid":"SJ2B3WOP731W_BK_82"}
+```
+[ouput data]
+```json
+{"result": "성공여부"}
+```
+------------------
 | `post` /member/cart/addcart  | 장바구니추가 | {"psid":"SJ2B4WOP759W_MB_82","pquantity":"1"} | {"result": "성공여부"} |
+------------------
 | `post` /member/cart/changecart | 장바구니 변경사항 저장 | {"oldpsid":"SJ2B3WSH842W_LB_82","newpsid":"SJ2B3WSH842W_LB_82","pquantity":"2"} | 장바구니목록 return |
 
 ## event(이벤트)
-| API | 설명 | input data | output data |
-| --- | --- | --- | --- |
+------------------
 | `get` /event/eventlist | 이벤트리스트 | ?pageNo=1 | [{"eno": 1,"etitle": "크리스마스 이벤트","econtent": null,"eissuedate": "2021-11-26T02:26:54.794+00:00","eexpiredate": "2021-12-25T02:26:58.040+00:00","elimitcount": 0,"ecount": 0,"eimg": "이미지url","ediscount": 0,"estatus": 0},{}{}]|
+------------------
 | `get` /event/eventdetail | 이벤트상세페이지 | ?eno=1 | {"eno": 1,"etitle": "앱다운로드이벤트","econtent": "크리스마스이벤트","eissuedate": "2021-11-10T06:04:41.780+00:00","eexpiredate": "2021-12-25T06:04:44.366+00:00","elimitcount": 0,"ecount": 0,"eimg": null,"ediscount": 0,"estatus": 0,"edetailimg": "http://cdn.thehandsome.com/pc/event/detail/image/handsome_202111/event_black_friday_211117_pc_img_01_02_1.jpg"}|
 
 ## couponDetail(쿠폰)
 
-| API | 설명 | input data | output data |
-| --- | --- | --- | --- |
+------------------
 | `get` /member/coupon/couponlist | 쿠폰목록 |  | [{"ecoupontitle": "앱다운로드 쿠폰","ediscount": 10,"cpstatus": 1,"cpissuedate": "2021-11-26T08:09:01.133+00:00","cpexpiredate": "2021-11-29T08:09:04.048+00:00"},{},{}]|
+------------------
 | `get` /member/coupon/download | 쿠폰다운 |  ?eno=2 | [{"result":"needlogin" or "already" or "exhausted" or "expired" or "enoerror"}|
