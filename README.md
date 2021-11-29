@@ -82,7 +82,7 @@
 
 [output data]
 ```json
-[{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": "상태","pcprice": 가격,"pcimg1": "상품이미지url"},{},{},{}]
+[{"bname":"브랜드명","pid": "p아이디","pcid": "pc아이디","pname": "상품명","pstatus": "상태","pcprice": "가격","pcimg1": "상품이미지url"},{},{},{}]
 ```
 
 ------------------
