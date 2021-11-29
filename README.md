@@ -73,7 +73,7 @@
 ```
 [output data]
 ```json
-{"result": "possible or duplicate"}|
+{"result": "possible or duplicate"}
 ```
 
 ### likes(찜)
@@ -104,7 +104,7 @@
 ```
 [output data]
 ```json
-{"result": "성공여부"} |
+{"result": "성공여부"}
 ```
 
 ## cart(장바구니)
@@ -119,10 +119,10 @@
 "pccolorcode": "색상코드",
 "pcimg1":"이미지url",
 "psid": "ps아이디",
-"psstock": 재고수량,
+"psstock": "재고수량",
 "psize": "사이즈",
-"pquantity": 수량,
-"pcprice": 가격,
+"pquantity": "수량",
+"pcprice": "가격",
 "pcchipimg":"컬러칩url",
 "colornsize":{"pid":"상품id","colorlist":[{},{}]}}, {} {} ]
 ```
