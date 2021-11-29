@@ -201,5 +201,5 @@
 `get` /member/coupon/download?eno=2 : 쿠폰다운
 [ouput data]
 ```json
-{"result":"needlogin or already or exhausted or expired or enoerror}
+{"result":"needlogin or already or exhausted or expired or enoerror"}
 ```
