@@ -5,7 +5,6 @@
 
  `post`  /login : 로그인하기 
  
- 
  [input data]
  ```json
  {"mid":"아이디","mpassword":"비밀번호"}
