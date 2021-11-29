@@ -16,7 +16,13 @@
 `post`  /join : 회원가입  
 [input data]
 ```json
-{"mid":"아이디","mpassword":"비밀번호","mname":"사용자1","memail":"user@mycompany.com","mphone":"01022227777","mbirth":"1990-01-01","mgender":"1"}
+{"mid":"아이디",
+"mpassword":"비밀번호",
+"mname":"사용자1",
+"memail":"user@mycompany.com",
+"mphone":"01022227777",
+"mbirth":"1990-01-01",
+"mgender":"1"}
 ```
 [output data]
 ```json
