@@ -98,6 +98,7 @@
 ```
 ------------------
 `post` /member/likes/addlike : 찜하기
+
 [input data]
 ```json
 {"pid":"CM2B0KCD231WP1"}
