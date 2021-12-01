@@ -126,7 +126,6 @@ public class MemberController {
 	//**아이디 중복확인**/
 	@PostMapping("/idcheck")
 	public Map<String, String> idcheck(@RequestBody Member member){
-	
 		Member memberResult = memberService.getMemberInfo(member.getMid());
 		
 		Map<String, String> map = new HashMap<>();

@@ -84,13 +84,13 @@ public class MemberService {
 		Member member = memberDao.selectByMid(mid);
 		if(member != null) {
 			member.setMpassword(null);
-		}
-		List<Orders> orders = orderDao.selectOrders(mid);
-		if(orders.size()==0) {
-			member.setTotalorderprice(0);
-		}else {
-			int sum = orderDao.selectTotalOrder(mid);
-			member.setTotalorderprice(sum);
+			List<Orders> orders = orderDao.selectOrders(mid);
+			if(orders.size()==0) {
+				member.setTotalorderprice(0);
+			}else {
+				int sum = orderDao.selectTotalOrder(mid);
+				member.setTotalorderprice(sum);
+			}
 		}
 		return member;
 	}
