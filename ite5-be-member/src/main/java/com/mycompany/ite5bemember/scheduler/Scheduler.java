@@ -24,6 +24,7 @@ public class Scheduler {
 	
 	@Scheduled(cron ="00 00 2 * * *")
 	public void scheduleMemberGrade() {
+		log.info("현재시간 : "+ new Date().toLocaleString());
 		log.info("--회원등급 Update Scheduler 작업시작--");
 		memberService.updateGrade();
 		log.info("--회원등급 Update Scheduler 작업끝--");
@@ -31,6 +32,7 @@ public class Scheduler {
 	
 	@Scheduled(cron = "00 00 0 * * *")
 	public void scheduleEventStatus() {
+		log.info("현재시간 : "+ new Date().toLocaleString());
 		log.info("--이벤트 Status Update Scheduler 작업시작--");
 		eventService.updateStatus();
 		log.info("--이벤트 Status Update Scheduler 작업끝--");
