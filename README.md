@@ -11,7 +11,7 @@
 `post` /member/likes/addlike : 찜하기  
 `post` /member/cart/cartlist : 장바구니목록 -> `get`  
 `delete` /member/cart/deletecart : 장바구니삭제  
-`post` /member/cart/addcart : 장바구니추가 
+`post` /member/cart/addcart : 장바구니추가  
 `post` /member/cart/changecart : 장바구니 변경사항 저장 
 `get` /event/eventlist?pageNo=1 : 이벤트리스트 
 `get` /event/eventdetail?eno=1 : 이벤트상세페이지  
