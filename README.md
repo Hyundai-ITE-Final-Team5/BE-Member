@@ -3,13 +3,13 @@
 ### Summary
 로그인하기 : `post`  /login  
 회원가입 : `post`  /join  
-마이페이지 : `post`  /member/mypage  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
-회원정보수정 : `post`  /member/modifyinfo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `put`  
+마이페이지 : `post`  /member/mypage  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
+회원정보수정 : `post`  /member/modifyinfo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `put`  
 아이디중복확인 : `post`  /idcheck  
-찜목록 : `post`  /member/likes/likelist  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
+찜목록 : `post`  /member/likes/likelist  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
 찜취소 : `delete` /member/likes/deletelike    
 찜하기 : `post` /member/likes/addlike    
-장바구니목록 : `post` /member/cart/cartlist  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
+장바구니목록 : `post` /member/cart/cartlist  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
 장바구니삭제 : `delete` /member/cart/deletecart    
 장바구니추가 : `post` /member/cart/addcart   
 장바구니 변경사항저장 : `post` /member/cart/changecart   
