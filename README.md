@@ -1,8 +1,8 @@
 # Member API
 
 ### Summary
-로그인하기 : `post`  /login 
-회원가입 : `post`  /join 
+로그인하기 : `post`  /login  
+회원가입 : `post`  /join  
 마이페이지 : `post`  /member/mypage  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `get`  
 회원정보수정 : `post`  /member/modifyinfo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> `put`
 아이디중복확인 : `post`  /idcheck  
