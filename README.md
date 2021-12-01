@@ -1,14 +1,14 @@
 # Member API
 
 ## Summary
-`post`  /login : 로그인하기 
-`post`  /join : 회원가입
-`post`  /member/mypage : 마이페이지
-`post`  /member/modifyinfo : 회원정보수정
-`post`  /idcheck : 아이디중복확인
-`post`  /member/likes/likelist : 찜목록
-`delete` /member/likes/deletelike : 찜취소
-`post` /member/likes/addlike : 찜하기
+`post`  /login : 로그인하기  
+`post`  /join : 회원가입  
+`post`  /member/mypage : 마이페이지  
+`post`  /member/modifyinfo : 회원정보수정  
+`post`  /idcheck : 아이디중복확인  
+`post`  /member/likes/likelist : 찜목록  
+`delete` /member/likes/deletelike : 찜취소  
+`post` /member/likes/addlike : 찜하기 
 `post` /member/cart/cartlist : 장바구니목록
 `delete` /member/cart/deletecart : 장바구니삭제 
 `post` /member/cart/addcart : 장바구니추가
