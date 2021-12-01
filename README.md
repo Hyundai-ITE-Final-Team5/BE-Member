@@ -1,9 +1,9 @@
 # Member API
 
 ### Summary
-`post`  /login : 로그인하기 -> `get`  
-`post`  /join : 회원가입  
-`post`  /member/mypage : 마이페이지 -> `get`  
+로그인하기 : `post`  /login                                    -> `get`  
+회원가입 : `post`  /join 
+`post`  /member/mypage : 마이페이지                            -> `get`  
 `post`  /member/modifyinfo : 회원정보수정  
 `post`  /idcheck : 아이디중복확인 -> `get`  
 `post`  /member/likes/likelist : 찜목록  -> `get`  
