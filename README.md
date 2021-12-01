@@ -1,6 +1,6 @@
 # Member API
 
-## Summary
+### Summary
 `post`  /login : 로그인하기  
 `post`  /join : 회원가입  
 `post`  /member/mypage : 마이페이지  
