@@ -1,7 +1,7 @@
 # Member API
 
 ### Summary
-로그인하기 : `post`  /login                                    -> `get`  
+로그인하기 : `post`  /login &nasp;&nasp;&nasp;&nasp;&nasp;-> `get`  
 회원가입 : `post`  /join 
 `post`  /member/mypage : 마이페이지                            -> `get`  
 `post`  /member/modifyinfo : 회원정보수정  
