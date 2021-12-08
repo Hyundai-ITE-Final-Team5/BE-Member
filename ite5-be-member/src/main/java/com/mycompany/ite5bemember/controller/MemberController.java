@@ -150,25 +150,45 @@ public class MemberController {
 	//**회원정보수정**
 	@PostMapping("/member/modifyinfo")
 	public Map<String, String> modifyinfo(HttpServletRequest request, @RequestBody Member member){
+		log.info(member.toString());
 		String jwt = request.getHeader("Authorization").substring(7);
 	 	Claims claims = JWTUtil.validateToken(jwt);
 		String mid = JWTUtil.getMid(claims);
 		member.setMid(mid);
 		
+		int NullCounter = 0;
+		
+		if(member.getMphone().equals("")) {
+			member.setMphone(null);
+			NullCounter++;
+		}
 		if(member.getMemail().equals("")) {
 			member.setMemail(null);
+			NullCounter++;
 		}
 		if(member.getMtel().equals("")) {
 			member.setMtel(null);
+			NullCounter++;
 		}
 		if(member.getMzipcode().equals("")) {
 			member.setMzipcode(null);
+			NullCounter++;
 		}
-	
+		if(member.getMaddress1().equals("")) {
+			member.setMaddress1(null);
+			NullCounter++;
+		}
+		if(member.getMaddress2().equals("")) {
+			member.setMaddress2(null);
+			NullCounter++;
+		}
+		Map<String,String> map = new HashMap<String, String>();
+		if(NullCounter == 6) {
+			map.put("result", "fail");
+			return map;
+		}
 		
 		int result = memberService.modifyInfo(member);
-		
-		Map<String,String> map = new HashMap<String, String>();
 		
 		if(result == 0) {
 			map.put("result", "fail");
