@@ -17,6 +17,7 @@
 이벤트상세페이지 : `get` /event/eventdetail?eno=1  
 쿠폰목록 : `get` /member/coupon/couponlist  
 쿠폰다운 : `get` /member/coupon/download?eno=2
+홈화면순서 : `get` /gethomeorder
 
 ### Member
 ------------------
@@ -223,4 +224,17 @@
 [output data]
 ```json
 {"result":"needlogin or already or exhausted or expired or enoerror"}
+```
+
+### UI
+------------------
+`get` /gethomeorder : 홈화면순서
+
+[output data]
+```json
+{
+    "event": 2,
+    "newproduct": 3,
+    "bestproduct": 1
+}
 ```
