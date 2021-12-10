@@ -13,6 +13,7 @@
 		<typeAlias type="com.mycompany.ite5bemember.dto.DownloadedCoupon" alias="downloadedcoupon"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.CouponDetail" alias="coupondetail"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.Orders" alias="orders"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.HomeOrder" alias="homeorder"/>
 		
 		
 	</typeAliases>	

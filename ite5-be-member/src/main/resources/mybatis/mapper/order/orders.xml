@@ -11,7 +11,9 @@
 	<select id="selectOrders" parameterType="string" resultType="orders">
 	SELECT oid FROM orders 
 	WHERE mid = #{mid}
+	AND ostatus = '주문완료'
 	AND odate BETWEEN add_months(sysdate,-1) AND SYSDATE
+
 	</select>
 	
 	<select id="select1grade" resultType="member">

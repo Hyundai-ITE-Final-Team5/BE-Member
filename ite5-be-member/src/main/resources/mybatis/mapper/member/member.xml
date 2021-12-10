@@ -16,18 +16,14 @@
 	
 	<update id="updateMember" parameterType="member">
 		UPDATE member
-		SET mphone = #{mphone}
-		<if test="memail != null">
-		,memail = #{memail}
-		</if>
-		<if test="mtel != null"> 
-		,mtel = #{mtel}
-		</if>
-		<if test="mzipcode != null"> 
-		,mzipcode = #{mzipcode}
-		,maddress1 = #{maddress1} 
-		,maddress2 = #{maddress2}
-		</if>
+		<set>
+		<if test="mphone != null">mphone = #{mphone},</if>
+		<if test="memail != null">memail = #{memail},</if>
+		<if test="mtel != null">mtel = #{mtel},</if>
+		<if test="mzipcode != null">mzipcode = #{mzipcode},</if>
+		<if test="maddress1 != null">maddress1 = #{maddress1},</if>
+		<if test="maddress2 != null">maddress2 = #{maddress2},</if>
+		</set>
 		WHERE mid = #{mid}
 	</update>
 	

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.mycompany.ite5bemember.service.EventService;
 import com.mycompany.ite5bemember.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,10 +19,22 @@ public class Scheduler {
 	@Resource 
 	private MemberService memberService;
 	
+	@Resource
+	private EventService eventService;
+	
 	@Scheduled(cron ="00 00 2 * * *")
 	public void scheduleMemberGrade() {
-		log.info("회원등급 Update Scheduler 작업시작");
+		log.info("현재시간 : "+ new Date().toLocaleString());
+		log.info("--회원등급 Update Scheduler 작업시작--");
 		memberService.updateGrade();
-		log.info("회원등급 Update Scheduler 작업끝");
+		log.info("--회원등급 Update Scheduler 작업끝--");
+	}
+	
+	@Scheduled(cron = "00 00 0 * * *")
+	public void scheduleEventStatus() {
+		log.info("현재시간 : "+ new Date().toLocaleString());
+		log.info("--이벤트 Status Update Scheduler 작업시작--");
+		eventService.updateStatus();
+		log.info("--이벤트 Status Update Scheduler 작업끝--");
 	}
 }

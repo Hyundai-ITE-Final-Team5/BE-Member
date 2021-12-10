@@ -23,15 +23,23 @@
 	
 	
 	<select id="selectBylikes" parameterType="likes" resultType="likedproduct">
-		select pcol_tbl.pid, pcom_tbl.pname, pcol_tbl.pcprice, pcom_tbl.pstatus, pcol_tbl.pcimg1, pcol_tbl.pcid, br.bname from 
-		(select pid, pcid, pcimg1, pcprice
-		from product_color
-		where ROWID in (select max(rowid) from product_color group by pid)) pcol_tbl
-		join product_common pcom_tbl
-		on pcol_tbl.pid = pcom_tbl.pid
-		join brand br
-		on br.bno = pcom_tbl.bno
-		where pcol_tbl.pid in (
+		SELECT 
+			pcol_tbl.pid, 
+			pcom_tbl.pname, 
+			pcol_tbl.pcprice, 
+			pcom_tbl.pstatus, 
+			pcol_tbl.pcimg1, 
+			pcol_tbl.pcid, 
+			br.bname 
+		FROM 
+			(SELECT pid, pcid, pcimg1, pcprice
+			FROM product_color
+			WHERE ROWID in (SELECT max(rowid) FROM product_color group by pid)) pcol_tbl
+		JOIN product_common pcom_tbl
+		ON pcol_tbl.pid = pcom_tbl.pid
+		JOIN brand br
+		ON br.bno = pcom_tbl.bno
+		WHERE pcol_tbl.pid in (
 		<foreach collection="likes" item="item" separator=",">
 			#{item.pid}
 		</foreach>

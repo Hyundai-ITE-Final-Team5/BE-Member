@@ -42,5 +42,23 @@
 		SET ecount = #{ecount}
 		WHERE eno = #{eno}
 	</update>
-
+	
+	<select id="selectExpiredEvent" resultType="event">
+		<![CDATA[
+			SELECT eno 
+			FROM event
+			WHERE eexpiredate < sysdate
+			AND estatus != 0
+		]]>
+	</select>
+	
+	<update id="updateExpiredEvent" parameterType="event">
+		UPDATE event
+		SET estatus = 0
+		WHERE eno in (
+		<foreach collection="event" item="item" separator=",">
+			#{item.eno}
+		</foreach>
+		)
+	</update>
 </mapper> 

@@ -23,7 +23,6 @@ public class EventService {
 		ENO_NONE
 	}
 	
-	
 	@Resource
 	private EventDao eventDao;
 	
@@ -63,6 +62,14 @@ public class EventService {
 		 }
 		 return result;
 		 
+	}
+	
+	// 날짜가 지난 Event status 처리
+	public void updateStatus() {
+		List<Event> eventList = eventDao.selectExpiredEvent();
+		if(eventList.size() != 0) {
+			eventDao.updateExpiredEvent(eventList);
+		}
 	}
 
 }

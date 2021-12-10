@@ -15,4 +15,6 @@ public interface EventDao {
 	public Event selectEvent(int eno);
 	public int updateToExhausted(int eno);
 	public int updateEcount(Map<String, Object> map);
+	public List<Event> selectExpiredEvent();
+	public int updateExpiredEvent(List<Event> event);
 }
