@@ -233,8 +233,8 @@
 [output data]
 ```json
 {
-    "event": 2,
-    "newproduct": 3,
-    "bestproduct": 1
+    "goshopevent": {"horder":"1","himg":"배경url"},
+    "membership": {"horder":"3","himg":"배경url"},
+    "bestnew": {"horder":"2","himg":"배경url"}
 }
 ```
