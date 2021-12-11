@@ -1,6 +1,8 @@
 package com.mycompany.ite5bemember.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,18 +18,12 @@ public class UiService {
 	@Resource
 	private HomeOrderDao homeOrderDao;
 	
-	public HomeOrderDto getHomeOrder() {
-		HomeOrderDto homeOrderDto = new HomeOrderDto();
-		List<HomeOrder> homeOrderList = homeOrderDao.selectHomeOrder();
-		for(HomeOrder homeOrder : homeOrderList) {
-			if(homeOrder.getHname().equals("newproduct")) {
-				homeOrderDto.setNewproduct(homeOrder.getHorder());
-			}else if(homeOrder.getHname().equals("bestproduct")) {
-				homeOrderDto.setBestproduct(homeOrder.getHorder());
-			}else if(homeOrder.getHname().equals("event")) {
-				homeOrderDto.setEvent(homeOrder.getHorder());
-			}
+	public Map<String,Object> getHomeOrder() {
+		Map<String,Object> outermap = new HashMap<String, Object>();
+		List<HomeOrderDto> homeOrderList = homeOrderDao.selectHomeOrder();
+		for(HomeOrderDto homeOrderDto : homeOrderList) {
+			outermap.put(homeOrderDto.getHoname(), homeOrderDto);
 		}
-		return homeOrderDto;
+		return outermap;
 	}
 }
