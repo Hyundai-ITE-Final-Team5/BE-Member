@@ -232,24 +232,24 @@
 
 [output data]
 ```json
-{
-    "goshopevent": {
+[
+    {
         "honame": "goshopevent",
         "hoorder": 1,
-        "hiimg": "이미지경로2",
-        "hiname": "멤버십기본"
+        "hiimg": "https://user-images.githubusercontent.com/82932127/145674253-79e41136-36fa-4ce4-9e13-a144a4a8c890.jpg",
+        "hiname": "한국모델1"
     },
-    "membership": {
+    {
         "honame": "membership",
         "hoorder": 2,
-        "hiimg": "이미지경로3",
-        "hiname": "베스트뉴기본"
+        "hiimg": "https://user-images.githubusercontent.com/82932127/145674235-5c095f01-8b78-4544-9aca-53addb098c29.jpg",
+        "hiname": "한국모델2"
     },
-    "bestnew": {
+    {
         "honame": "bestnew",
         "hoorder": 3,
-        "hiimg": "이미지경로1",
-        "hiname": "고샵이벤트기본"
+        "hiimg": "https://user-images.githubusercontent.com/82932127/145674197-62ba1f44-6ee5-4e0a-bf46-be5d044e95b4.jpg",
+        "hiname": "한국모델3"
     }
-}
+]
 ```
