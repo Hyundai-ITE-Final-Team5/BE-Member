@@ -17,7 +17,7 @@
 이벤트상세페이지 : `get` /event/eventdetail?eno=1  
 쿠폰목록 : `get` /member/coupon/couponlist  
 쿠폰다운 : `get` /member/coupon/download?eno=2  
-홈화면순서 : `get` /gethomeorder
+홈화면순서 : `get` /gethomeorderimg
 
 ### Member
 ------------------
@@ -228,13 +228,28 @@
 
 ### UI
 ------------------
-`get` /gethomeorder : 홈화면순서
+`get` /gethomeorderimg : 홈화면순서
 
 [output data]
 ```json
 {
-    "goshopevent": {"horder":"1","himg":"배경url"},
-    "membership": {"horder":"3","himg":"배경url"},
-    "bestnew": {"horder":"2","himg":"배경url"}
+    "goshopevent": {
+        "honame": "goshopevent",
+        "hoorder": 1,
+        "hiimg": "이미지경로2",
+        "hiname": "멤버십기본"
+    },
+    "membership": {
+        "honame": "membership",
+        "hoorder": 2,
+        "hiimg": "이미지경로3",
+        "hiname": "베스트뉴기본"
+    },
+    "bestnew": {
+        "honame": "bestnew",
+        "hoorder": 3,
+        "hiimg": "이미지경로1",
+        "hiname": "고샵이벤트기본"
+    }
 }
 ```
