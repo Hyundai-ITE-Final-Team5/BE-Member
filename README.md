@@ -256,7 +256,7 @@
 
 ### Today
 ------------------
-`post` /visit : 홈화면순서
+`post` /visit : 방문자수 증가
 
 [output data]
 ```json
