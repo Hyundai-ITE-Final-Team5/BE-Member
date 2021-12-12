@@ -18,7 +18,7 @@
 쿠폰목록 : `get` /member/coupon/couponlist  
 쿠폰다운 : `get` /member/coupon/download?eno=2  
 홈화면순서 : `get` /gethomeorderimg
-
+방문자수 증가 : `post` /visit  
 ### Member
 ------------------
  `post`  /login : 로그인하기 
@@ -252,4 +252,15 @@
         "hiname": "한국모델3"
     }
 ]
+```
+
+### Today
+------------------
+`post` /visit : 홈화면순서
+
+[output data]
+```json
+{
+    "result": "success"
+}
 ```
