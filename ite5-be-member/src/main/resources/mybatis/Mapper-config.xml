@@ -15,6 +15,7 @@
 		<typeAlias type="com.mycompany.ite5bemember.dto.Orders" alias="orders"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.HomeOrder" alias="homeorder"/>
 		<typeAlias type="com.mycompany.ite5bemember.dto.HomeOrderDto" alias="homeorderdto"/>
+		<typeAlias type="com.mycompany.ite5bemember.dto.Today" alias="today"/>
 		
 		
 	</typeAliases>	
