@@ -27,13 +27,14 @@ public class TodayService {
 
 		Callable<Integer> task = new Callable<Integer>() {
 			
-			Date nowDate  = new Date();
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
-			String today = simpleDateFormat.format(nowDate);
-			Today todayVisit = todayDao.selectToday(today);
-			
 			@Override
 			public Integer call() throws Exception {
+				
+				Date nowDate  = new Date();
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
+				String today = simpleDateFormat.format(nowDate);
+				Today todayVisit = todayDao.selectToday(today);
+				
 				int result = 0;
 				if(todayVisit == null) {
 					result = todayDao.insertToday();
