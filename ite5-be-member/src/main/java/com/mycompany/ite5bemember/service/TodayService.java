@@ -48,7 +48,7 @@ public class TodayService {
 	    cal.add(Calendar.DATE, -1);
 		
 		String yesterday = simpleDateFormat.format(cal.getTime());
-		int count = Integer.valueOf(vop.get(yesterday));
+		int count = vop.get(yesterday)!=null?Integer.valueOf(vop.get(yesterday)):0;
 		
 		todayDao.insertToday(count);
 	}
