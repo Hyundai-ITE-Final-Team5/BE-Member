@@ -1,58 +1,67 @@
 package com.mycompany.ite5bemember.service;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.ite5bemember.dto.Today;
 import com.mycompany.ite5bemember.memberdao.TodayDao;
 
 @Service
 public class TodayService {
-		
+	
+	@Resource
+	private RedisTemplate<String, String> redisTemplate;
+	
 	@Resource TodayDao todayDao;
 	
-	private ExecutorService executorsService = Executors.newFixedThreadPool(1);
+	public Map<String,String> visit() {
+	ValueOperations<String, String> vop = redisTemplate.opsForValue();
+	Date nowDate  = new Date();
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
+	String today = simpleDateFormat.format(nowDate);
+	vop.increment(today, 1);
+	//유효시간 설정 2일
+	//vop.getAndExpire(today, 2, TimeUnit.DAYS);
+		
+	Map<String,String> map = new HashMap<String, String>();
+	map.put("result", "success");
+	return map;
+	}
 	
-	public Map<String,String> visit() throws Exception {
-
-		Callable<Integer> task = new Callable<Integer>() {
-			
-			@Override
-			public Integer call() throws Exception {
-				
-				Date nowDate  = new Date();
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
-				String today = simpleDateFormat.format(nowDate);
-				Today todayVisit = todayDao.selectToday(today);
-				
-				int result = 0;
-				if(todayVisit == null) {
-					result = todayDao.insertToday();
-				}else {
-					result = todayDao.updateToday(today);
-				}
-				return result;
-			}
-		};
+	//어제 방문자 수를 insert하는 메서드
+	public void insertVisitor() {
+		ValueOperations<String, String> vop = redisTemplate.opsForValue();
 		
-		Future<Integer> future = executorsService.submit(task);
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(new Date());
+	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
+	    
+	    //하루 빼기
+	    cal.add(Calendar.DATE, -1);
 		
-		Map<String,String> map = new HashMap<String, String>();
-		if(future.get() == 0) {
-			map.put("result", "fail");
-		}else {
-			map.put("result", "success");
-		}
-		return map;
+		String yesterday = simpleDateFormat.format(cal.getTime());
+		int count = Integer.valueOf(vop.get(yesterday));
+		
+		todayDao.insertToday(count);
+	}
+	
+	//방문자 수를 return하는 메서드
+	public int getTodayCount() {
+		ValueOperations<String, String> vop = redisTemplate.opsForValue();
+		Date nowDate  = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
+		String today = simpleDateFormat.format(nowDate);
+		int count = Integer.valueOf(vop.get(today));
+		return count;
 	}
 }

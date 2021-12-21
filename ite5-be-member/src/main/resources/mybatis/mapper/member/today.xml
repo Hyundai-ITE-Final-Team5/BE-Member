@@ -8,9 +8,9 @@
 		WHERE to_char(tvdate,'YY/MM/DD') = #{today}
 	</select>
 	
-	<insert id="insertToday">
+	<insert id="insertToday" parameterType="int">
 		INSERT INTO today(tvdate, tvcount)
-		VALUES(sysdate, 1)
+		VALUES(sysdate-1, #{count})
 	</insert>
 	
 	<update id="updateToday" parameterType="string">
