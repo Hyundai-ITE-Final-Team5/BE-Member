@@ -2,6 +2,7 @@ package com.mycompany.ite5bemember.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,8 +37,8 @@ public class TodayService {
 	return map;
 	}
 	
-	//어제 방문자 수를 insert하는 메서드
-	public void insertVisitor() {
+	//어제 방문자 수를 insert하고 다음날 key, value를 미리 만드는 메서드
+	public void insertVisitorAndMakeKey() {
 		ValueOperations<String, String> vop = redisTemplate.opsForValue();
 		
 		Calendar cal = Calendar.getInstance();
@@ -51,6 +52,12 @@ public class TodayService {
 		int count = vop.get(yesterday)!=null?Integer.valueOf(vop.get(yesterday)):0;
 		
 		todayDao.insertToday(count);
+		
+		//하루 더하기
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, 1);
+		String tomorrow =  simpleDateFormat.format(cal.getTime());
+		vop.set(tomorrow,"0",Duration.ofDays(4));
 	}
 	
 	//방문자 수를 return하는 메서드

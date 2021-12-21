@@ -46,7 +46,7 @@ public class Scheduler {
 	public void scheduleTodayInsert() {
 		log.info("현재시간 : "+ new Date().toLocaleString());
 		log.info("--Today Insert Scheduler 작업시작--");
-		todayService.insertVisitor();
+		todayService.insertVisitorAndMakeKey();
 		log.info("--Today Insert Scheduler Scheduler 작업끝--");
 	}
 }
