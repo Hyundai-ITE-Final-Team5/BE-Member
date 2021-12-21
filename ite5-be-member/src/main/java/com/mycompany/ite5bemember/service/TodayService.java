@@ -30,8 +30,6 @@ public class TodayService {
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
 	String today = simpleDateFormat.format(nowDate);
 	vop.increment(today, 1);
-	//유효시간 설정 2일
-	//vop.getAndExpire(today, 2, TimeUnit.DAYS);
 		
 	Map<String,String> map = new HashMap<String, String>();
 	map.put("result", "success");
@@ -61,7 +59,7 @@ public class TodayService {
 		Date nowDate  = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/dd"); 
 		String today = simpleDateFormat.format(nowDate);
-		int count = Integer.valueOf(vop.get(today));
+		int count = vop.get(today)!=null?Integer.parseInt(vop.get(today)):0;
 		return count;
 	}
 }
